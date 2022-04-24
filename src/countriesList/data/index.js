@@ -1,0 +1,1 @@
+export { getPagination } from './countriesListData';

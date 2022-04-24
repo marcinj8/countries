@@ -1,0 +1,28 @@
+.countriesListItem-container {
+  list-style-type: none;
+  padding-top: 30px;
+  margin: 15px auto;
+  width: 95%;
+  min-height: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 1px 1px 5px;
+  background: silver;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.countriesListItem-container:hover {
+  background: white;
+  transform: scale(1.05);
+  box-shadow: 3px 3px 8px;
+}
+
+@media (min-width: 450px) {
+  .countriesListItem-container {
+    line-height: 50px;
+    width: 400px;
+    padding-top: 0;
+  }
+}

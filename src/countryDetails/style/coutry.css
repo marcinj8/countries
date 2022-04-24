@@ -1,0 +1,19 @@
+.country-container {
+  position: relative;
+  top: 80px;
+  padding: 20px 20px 40px 20px;
+  font-size: 1.2rem;
+  width: 60%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 4px 5px 15px
+}
+
+.country-container h2 {
+  margin: 20px;
+}
+
+.country-container h4 {
+  margin: 10px;
+}

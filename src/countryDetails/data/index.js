@@ -1,0 +1,1 @@
+export { getCountryData } from './countryDetailsData';

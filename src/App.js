@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import * as React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import { CountriesContext } from './shared/contexts';
+import { useCountries } from './shared/hooks';
+
+import { CountriesList } from './countriesList/';
+import { CountriesDetails } from './countryDetails';
+// import { Navigation } from './navigation';
+
 import './App.css';
 
 function App() {
+  const { countriesList, savedCountriesData, saveCountriesList, saveCountry } =
+    useCountries();
+    
+  const countriesContextInitial = {
+    countriesList,
+    savedCountriesData,
+    saveCountriesList,
+    saveCountry,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <CountriesContext.Provider value={countriesContextInitial}>
+        {/* <Navigation /> */}
+        <Routes>
+          <Route path='/' element={<CountriesList />} />
+          <Route path='/country/:countryName' element={<CountriesDetails />} />
+        </Routes>
+      </CountriesContext.Provider>
     </div>
   );
 }
-
 export default App;
