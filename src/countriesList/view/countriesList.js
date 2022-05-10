@@ -9,7 +9,7 @@ import { useFetchData } from '../../shared/hooks';
 import { getPagination } from '../data';
 
 const CountriesList = () => {
-  const { countriesList } = useContext(CountriesContext);
+  const { countriesList, saveCountriesList } = useContext(CountriesContext);
   const [activePage, setActivePage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const [isAscendingly, setIsAscendingly] = useState(true);
@@ -18,7 +18,7 @@ const CountriesList = () => {
 
   const list = useMemo(() => {
     if (countriesList.length === 0) {
-      return null;
+      return fetchCountiesList('united', saveCountriesList);
     }
     const pagginationList = getPagination(countriesList, 5, isAscendingly);
     setNumberOfPages(pagginationList.length);
@@ -26,7 +26,7 @@ const CountriesList = () => {
     return pagginationList[activePage - 1].map((item) => (
       <CountriesListItem key={item.name} countryName={item.name} />
     ));
-  }, [countriesList, activePage, isAscendingly]);
+  }, [countriesList, activePage, isAscendingly, fetchCountiesList, saveCountriesList]);
 
   return (
     <React.Fragment>

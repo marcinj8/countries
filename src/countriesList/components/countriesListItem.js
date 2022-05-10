@@ -14,7 +14,7 @@ const CountriesListItem = ({ countryName }) => {
       className='countriesListItem-container'
     >
       <Link ref={itemRef} to={`/country/${countryName}`}>
-        {countryName} united
+        {countryName}
       </Link>
     </li>
   );

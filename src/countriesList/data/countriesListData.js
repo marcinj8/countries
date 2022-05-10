@@ -5,13 +5,14 @@ const compare = (a, b) => {
   if (a.name > b.name) {
     return 1;
   }
-  
+
   return 0;
 };
 
-const sortList = (list, isAscendingly) => {
+export const sortList = (list, isAscendingly = true) => {
   const fullList = [...list];
   fullList.sort(compare);
+
   if (!isAscendingly) {
     fullList.reverse();
   }

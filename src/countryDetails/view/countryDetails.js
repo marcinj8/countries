@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { AsyncView } from '../../shared/asyncView';
 
-import { CountriesContext } from '../../shared/contexts';
-import { useFetchData } from '../../shared/hooks/fetchData-hook';
+import { AsyncView } from '../../shared/asyncView';
 import { Country } from '../components';
+
+import { useFetchData } from '../../shared/hooks/fetchData-hook';
+import { CountriesContext } from '../../shared/contexts';
 import { getSavedCountryData } from '../data/countryDetailsData';
 
 import '../style/countryDetails.css';

@@ -9,13 +9,29 @@
   background: gray;
 }
 button {
-  margin: 3px;
+  margin: 5px;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid black;
   outline: none;
   background: white;
-  cursor: pointer
+  cursor: pointer;
+  min-width: 40px;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:disabled {
+  background: gray;
+  cursor: default;
+  color: white;
+}
+
+button:disabled:hover {
+  transform: scale(1);
 }
 
 input {

@@ -3,6 +3,7 @@ import React from 'react';
 import './asyncView.css';
 
 const AsyncView = ({ loading, error, errorMessage }) => {
+
   return (
     <div className='asyncView-container'>
       {loading && <div className='spinner'>Loading...</div>}

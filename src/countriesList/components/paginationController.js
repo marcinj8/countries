@@ -1,28 +1,69 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+
+import { pushButton, unshiftButton } from '../data';
 
 const PaginationController = ({ numberOfPages, activePage, setActivePage }) => {
-  let buttons = [];
+  const buttonsLimit = 7 < numberOfPages ? 7 : numberOfPages;
 
-  for (let i = 0; i < numberOfPages; i++) {
-    if (
-      i === 0 ||
-      i === numberOfPages - 1 ||
-      (activePage - i <= 3 && i - activePage < 2)
-    )
+  const controllers = useMemo(() => {
+    let counter = 1;
+    let addBefore = true;
+    const buttons = [];
+
+    if (activePage !== 1 && numberOfPages !== activePage) {
       buttons.push(
         <button
-          key={i}
-          disabled={i === activePage - 1}
+          key={activePage}
+          disabled={true}
           onClick={() => {
-            setActivePage(i + 1);
+            setActivePage(activePage);
           }}
         >
-          {i + 1}
+          {activePage}
         </button>
       );
-  }
+    }
 
-  return <div>{buttons}</div>;
+    while (buttons.length < buttonsLimit - 2) {
+      if (addBefore) {
+        unshiftButton(counter, buttons, activePage, setActivePage);
+        addBefore = false;
+      } else {
+        pushButton(counter, buttons, activePage, numberOfPages, setActivePage);
+        addBefore = true;
+        counter++;
+      }
+    }
+
+    buttons.unshift(
+      <button
+        key={0}
+        disabled={0 === activePage - 1}
+        onClick={() => {
+          setActivePage(1);
+        }}
+      >
+        {1}
+      </button>
+    );
+    if (numberOfPages !== 1) {
+      buttons.push(
+        <button
+          key={numberOfPages}
+          disabled={numberOfPages === activePage}
+          onClick={() => {
+            setActivePage(numberOfPages);
+          }}
+        >
+          {numberOfPages}
+        </button>
+      );
+    }
+
+    return buttons;
+  }, [activePage, numberOfPages, setActivePage, buttonsLimit]);
+
+  return <div>{controllers}</div>;
 };
 
 export default PaginationController;
